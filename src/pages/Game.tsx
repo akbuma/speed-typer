@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { History, LocationState } from "history";
+
 import {
   StyledGame,
   StyledScore,
@@ -7,7 +9,11 @@ import {
 } from "../styled/Game";
 import { Strong } from "../styled/Random";
 
-export default function Game() {
+interface GameProps {
+  history: History<LocationState>;
+}
+
+export default function Game({ history }: GameProps) {
   const MAX_SECONDS = 5;
   const [score, setScore] = useState(0);
   const [ms, setMs] = useState("0");
@@ -20,8 +26,7 @@ export default function Game() {
   }, []);
 
   useEffect(() => {
-    if (parseInt(seconds) < -1) {
-      console.log("game over");
+    if (parseInt(seconds) <= -1) {
       history.push("/gameOver");
     }
   }, [seconds, ms, history]);
@@ -32,12 +37,15 @@ export default function Game() {
     const formattedMSString = ("0000" + msPassedStr).slice(-5);
     const updatedSeconds =
       MAX_SECONDS - parseInt(formattedMSString.substring(0, 2)) - 1;
-    const updatedMs =
-      1000 -
-      parseInt(formattedMSString.substring(formattedMSString.length - 3));
+    const updatedMs = (
+      1000 - parseInt(formattedMSString.substring(formattedMSString.length - 3))
+    )
+      .toString()
+      .slice(0, 2);
 
+    console.log(updatedMs);
     setSeconds(updatedSeconds.toString().padStart(2, "0"));
-    setMs(updatedMs.toString().padStart(3, "0"));
+    setMs(updatedMs.toString().padStart(2, "0"));
   };
 
   return (
