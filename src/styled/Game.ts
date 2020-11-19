@@ -24,3 +24,5 @@ export const StyledCharacter = styled.p`
   text-align: center;
   color: #e16365;
 `;
+
+// GLOBAL STYLES
