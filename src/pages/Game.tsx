@@ -14,7 +14,7 @@ interface GameProps {
 }
 
 export default function Game({ history }: GameProps) {
-  const MAX_SECONDS = 5;
+  const MAX_SECONDS = 90;
   const [score, setScore] = useState(0);
   const [ms, setMs] = useState("0");
   const [seconds, setSeconds] = useState(MAX_SECONDS.toString());
@@ -30,6 +30,19 @@ export default function Game({ history }: GameProps) {
       history.push("/gameOver");
     }
   }, [seconds, ms, history]);
+
+  const keyUpHandler = (e: KeyboardEvent) => {
+    console.log(e.type);
+    console.log(e.key);
+  };
+
+  useEffect(() => {
+    document.addEventListener("keyup", keyUpHandler);
+    // remove the event listener when the component re-renders
+    return () => {
+      document.removeEventListener("keyup", keyUpHandler);
+    };
+  }, []);
 
   const updateTime = (startTime: Date) => {
     const endTime = new Date();
