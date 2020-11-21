@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game Class renders correct styles 1`] = `
+<div
+  className="sc-bdfBwQ cPnbuW"
+>
+  <p
+    className="sc-gsTCUz cUGGCi"
+  >
+    Score: 
+    <strong
+      className="sc-gKsewC jqTwMs"
+    >
+      0
+    </strong>
+  </p>
+  <p
+    className="sc-hKgILt hgEJIr"
+  >
+    A
+  </p>
+  <p
+    className="sc-dlfnbm hhKTiW"
+  >
+    Time:
+     
+    <strong
+      className="sc-gKsewC jqTwMs"
+    >
+      5
+      :
+      0
+    </strong>
+  </p>
+</div>
+`;

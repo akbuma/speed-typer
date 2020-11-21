@@ -42,8 +42,6 @@ export default function Game({ history }: GameProps) {
     )
       .toString()
       .slice(0, 2);
-
-    console.log(updatedMs);
     setSeconds(updatedSeconds.toString().padStart(2, "0"));
     setMs(updatedMs.toString().padStart(2, "0"));
   };

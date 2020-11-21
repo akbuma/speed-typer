@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <StyledTitle>Ready to type?</StyledTitle>
-      <CTA to='/game'>
+      <CTA to='/game' data-test='game-link'>
         Click or type <Accent>'s'</Accent> to start playing!
       </CTA>
     </div>
