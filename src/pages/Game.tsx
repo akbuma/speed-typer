@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { History, LocationState } from "history";
 
 import {
@@ -15,11 +15,15 @@ interface GameProps {
 
 export default function Game({ history }: GameProps) {
   const MAX_SECONDS = 90;
+  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+  const [currentCharacter, setCurrentCharacter] = useState("");
   const [score, setScore] = useState(0);
   const [ms, setMs] = useState("0");
   const [seconds, setSeconds] = useState(MAX_SECONDS.toString());
 
   useEffect(() => {
+    setRandomCharacter();
     const currentTime = new Date();
     const interval = setInterval(() => updateTime(currentTime), 1);
     return () => clearInterval(interval);
@@ -31,9 +35,23 @@ export default function Game({ history }: GameProps) {
     }
   }, [seconds, ms, history]);
 
-  const keyUpHandler = (e: KeyboardEvent) => {
-    console.log(e.type);
-    console.log(e.key);
+  const keyUpHandler = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === currentCharacter) {
+        setScore((prevScore) => prevScore + 1);
+      } else {
+        if (score > 0) {
+          setScore((prevScore) => prevScore - 1);
+        }
+      }
+      setRandomCharacter();
+    },
+    [currentCharacter]
+  );
+
+  const setRandomCharacter = () => {
+    const randomInt: number = Math.floor(Math.random() * 36);
+    setCurrentCharacter(characters[randomInt]);
   };
 
   useEffect(() => {
@@ -42,7 +60,7 @@ export default function Game({ history }: GameProps) {
     return () => {
       document.removeEventListener("keyup", keyUpHandler);
     };
-  }, []);
+  }, [keyUpHandler]);
 
   const updateTime = (startTime: Date) => {
     const endTime = new Date();
@@ -64,7 +82,7 @@ export default function Game({ history }: GameProps) {
       <StyledScore>
         Score: <Strong>{score}</Strong>
       </StyledScore>
-      <StyledCharacter>A</StyledCharacter>
+      <StyledCharacter>{currentCharacter.toUpperCase()}</StyledCharacter>
       <StyledTimer>
         Time:{" "}
         <Strong>
