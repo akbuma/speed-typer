@@ -8,22 +8,25 @@ import {
   StyledCharacter,
 } from "../styled/Game";
 import { Strong } from "../styled/Random";
+import { useScore } from "../contexts/ScoreContext";
 
 interface GameProps {
   history: History<LocationState>;
 }
 
 export default function Game({ history }: GameProps) {
-  const MAX_SECONDS = 90;
+  const { score, setScore } = useScore();
+
+  const MAX_SECONDS = 5;
   const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
 
   const [currentCharacter, setCurrentCharacter] = useState("");
-  const [score, setScore] = useState(0);
   const [ms, setMs] = useState("0");
   const [seconds, setSeconds] = useState(MAX_SECONDS.toString());
 
   useEffect(() => {
     setRandomCharacter();
+    setScore(0);
     const currentTime = new Date();
     const interval = setInterval(() => updateTime(currentTime), 1);
     return () => clearInterval(interval);
@@ -39,10 +42,10 @@ export default function Game({ history }: GameProps) {
   const keyUpHandler = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === currentCharacter) {
-        setScore((prevScore) => prevScore + 1);
+        setScore(score + 1);
       } else {
         if (score > 0) {
-          setScore((prevScore) => prevScore - 1);
+          setScore(score - 1);
         }
       }
       setRandomCharacter();
