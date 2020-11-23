@@ -35,6 +35,7 @@ export default function Game({ history }: GameProps) {
     }
   }, [seconds, ms, history]);
 
+  // updates whenever currentCharacter is updated, otherwise currentCharacter will always equal the initial state in the function
   const keyUpHandler = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === currentCharacter) {
