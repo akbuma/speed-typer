@@ -30,6 +30,7 @@ export default function Game({ history }: GameProps) {
     const currentTime = new Date();
     const interval = setInterval(() => updateTime(currentTime), 1);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function Game({ history }: GameProps) {
 
   // updates whenever currentCharacter is updated, otherwise currentCharacter will always equal the initial state in the function
   const keyUpHandler = useCallback(
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     (e: KeyboardEvent) => {
       if (e.key === currentCharacter) {
         setScore(score + 1);
@@ -50,6 +52,7 @@ export default function Game({ history }: GameProps) {
       }
       setRandomCharacter();
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentCharacter]
   );
 
