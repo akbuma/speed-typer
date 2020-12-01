@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ScoresList, ScoreLI } from "../styled/HighScores";
+import { StyledTitle } from "../styled/Random";
 
 interface ScoreObject {
   fields: {
@@ -25,11 +26,11 @@ export default function HighScores() {
 
   return (
     <div>
-      <h1>HighScores</h1>
+      <StyledTitle>HighScores</StyledTitle>
       <ScoresList>
         {highScores.map((score: ScoreObject, idx) => (
           <ScoreLI key={idx}>
-            {score.fields.name} - {score.fields.Score}
+            {idx + 1}. {score.fields.name} - {score.fields.Score}
           </ScoreLI>
         ))}
       </ScoresList>

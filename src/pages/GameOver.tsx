@@ -3,6 +3,7 @@ import { History, LocationState } from "history";
 import { useScore } from "../contexts/ScoreContext";
 import { StyledLink } from "../styled/Navbar";
 import { StyledCharacter } from "../styled/Game";
+import { StyledTitle } from "../styled/Random";
 
 interface GameOverProps {
   history: History<LocationState>;
@@ -25,6 +26,7 @@ export default function GameOver({ history }: GameOverProps) {
         };
         const res = await fetch("/.netlify/functions/saveHighScores", options);
         const data = await res.json();
+        console.log(data);
         if (data.id) {
           setScoreMessage("High Score Set!");
         } else {
@@ -39,11 +41,15 @@ export default function GameOver({ history }: GameOverProps) {
 
   return (
     <div>
-      <h1>Game Over</h1>
+      <StyledTitle>Game Over</StyledTitle>
+      <h2>{scoreMessage}</h2>
       <StyledCharacter>{score}</StyledCharacter>
-      <p>{scoreMessage}</p>
-      <StyledLink to="/">Go Home</StyledLink>
-      <StyledLink to="/game">Play Again</StyledLink>
+      <div>
+        <StyledLink to="/">Go Home</StyledLink>
+      </div>
+      <div>
+        <StyledLink to="/game">Play Again</StyledLink>
+      </div>
     </div>
   );
 }
