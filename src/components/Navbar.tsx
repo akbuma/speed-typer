@@ -7,22 +7,35 @@ import {
   StyledLink,
 } from "../styled/Navbar";
 import { Accent } from "../styled/Random";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Navbar() {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <StyledNavbar>
       <StyledNavBrand>
-        <Link to='/'>
+        <Link to="/">
           Learn.Build.<Accent>Type.</Accent>
         </Link>
       </StyledNavBrand>
       <StyledNavItems>
         <li>
-          <StyledLink to='/'>Home</StyledLink>
+          <StyledLink to="/">Home</StyledLink>
         </li>
         <li>
-          <StyledLink to='/highScores'>High Scores</StyledLink>
+          <StyledLink to="/highScores">High Scores</StyledLink>
         </li>
+        {!isAuthenticated && (
+          <li>
+            <button onClick={() => loginWithRedirect()}>Login Bro!</button>
+          </li>
+        )}
+        {isAuthenticated && (
+          <li>
+            <button onClick={() => logout()}>Logout</button>
+          </li>
+        )}
       </StyledNavItems>
     </StyledNavbar>
   );

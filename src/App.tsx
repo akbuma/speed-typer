@@ -10,8 +10,15 @@ import Navbar from "./components/Navbar";
 import { Container } from "./styled/Container";
 import { Main } from "./styled/Main";
 import Global from "./styled/Global";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <Router>
       <Global />

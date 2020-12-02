@@ -37,7 +37,7 @@ export default function GameOver({ history }: GameOverProps) {
       }
     };
     saveHighScore();
-  }, []);
+  }, [score]);
 
   return (
     <div>
