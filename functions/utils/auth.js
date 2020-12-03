@@ -32,12 +32,7 @@ const validateAccessToken = async (token) => {
     const kid = decodedToken.header.kid;
     const alg = decodedToken.header.alg;
 
-    console.log(`KID IS ${kid}`);
-    console.log(`ALG IS ${alg}`); // 14:15
-
     const getSigningKey = promisify(jwksClient.getSigningKey);
-    console.log(`KEY IS ${getSigningKey}`);
-
     const key = await getSigningKey(kid);
     const signingKey = key.publicKey;
 
