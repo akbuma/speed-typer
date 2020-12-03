@@ -9,6 +9,7 @@ exports.handler = async (event) => {
 
   const token = getAccessTokenFromHeaders(event.headers);
   const user = await validateAccessToken(token);
+  console.log(user);
 
   // prevent outside users from trying to submit their own high score
   if (!user) {
@@ -28,7 +29,9 @@ exports.handler = async (event) => {
   }
 
   // const body = JSON.parse(event.body);
-  const { Score, name } = JSON.parse(event.body);
+  const { Score } = JSON.parse(event.body);
+  const name = user["https://speedtyper/username"];
+
   if (typeof Score === "undefined" || !name) {
     return {
       statusCode: 400,
