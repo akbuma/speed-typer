@@ -11,6 +11,7 @@ ReactDOM.render(
       domain="dev-z0nxbt5z.us.auth0.com"
       clientId="E4D8LsYvtVMnDoO0mH6Y6IkPssQ6bo2x"
       redirectUri={window.location.origin}
+      audience="https://speedtyperapi/"
     >
       <ScoreProvider>
         <App />
