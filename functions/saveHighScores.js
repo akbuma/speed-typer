@@ -1,6 +1,18 @@
 const { table, getHighScores } = require("./utils/airtable");
+const { getAccessTokenFromHeaders } = require("./utils/auth");
 
 exports.handler = async (event) => {
+  console.log(event.headers);
+
+  const token = getAccessTokenFromHeaders(event.headers);
+  // prevent outside users from trying to submit their own high score
+  if (!token) {
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ err: "User is not logged in" }),
+    };
+  }
+
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
