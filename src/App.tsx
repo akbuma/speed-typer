@@ -16,7 +16,14 @@ function App() {
   const { isLoading } = useAuth0();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <React.Fragment>
+        <Global />
+        <Main>
+          <p>Loading...</p>
+        </Main>
+      </React.Fragment>
+    );
   }
 
   return (
