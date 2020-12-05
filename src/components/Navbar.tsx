@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import {
   StyledNavbar,
@@ -8,8 +8,14 @@ import {
 } from "../styled/Navbar";
 import { Accent } from "../styled/Random";
 import { useAuth0 } from "@auth0/auth0-react";
+import useTheme from "../hooks/useTheme";
 
-export default function Navbar() {
+interface NavbarProps {
+  toggleTheme: () => void;
+}
+
+// allow toggleTheme to be passed through props over context since its the only component using the function
+export default function Navbar({ toggleTheme }: NavbarProps) {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
@@ -36,6 +42,7 @@ export default function Navbar() {
             <button onClick={() => logout()}>Logout</button>
           </li>
         )}
+        <button onClick={toggleTheme}>Toggle Theme</button>
       </StyledNavItems>
     </StyledNavbar>
   );
