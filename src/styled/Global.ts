@@ -1,7 +1,5 @@
 import { createGlobalStyle, DefaultTheme } from "styled-components";
 
-const isDarkThemeEnabled = false;
-
 export default createGlobalStyle`
     :root {
         --main-bg-color: ${(props) => props.theme.mainBgColor};
