@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   StyledNavbar,
@@ -10,7 +10,6 @@ import {
 import { StyledButton } from "../styled/Buttons";
 import { Accent } from "../styled/Random";
 import { useAuth0 } from "@auth0/auth0-react";
-import useTheme from "../hooks/useTheme";
 
 interface NavbarProps {
   toggleTheme: () => void;

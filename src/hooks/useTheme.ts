@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+//@ts-ignore
 export default (): [string, () => void] => {
   const [theme, setTheme] = useState("light");
 

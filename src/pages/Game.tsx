@@ -6,7 +6,6 @@ import {
   StyledScore,
   StyledTimer,
   StyledCharacterGame,
-  StyledDisplay,
 } from "../styled/Game";
 import { Strong } from "../styled/Random";
 import { useScore } from "../contexts/ScoreContext";
