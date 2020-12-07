@@ -7,10 +7,13 @@ export const Accent = styled.span`
 export const StyledTitle = styled.h1`
   font-size: 3.6rem;
   text-align: center;
-  margin-bottom: 2rem;
-  margin-top: 3rem;
+  color: var(--accent-color);
 `;
 
 export const Strong = styled.strong`
   font-weight: bold;
+`;
+
+export const GameMessage = styled.h2`
+  margin-top: -50px;
 `;

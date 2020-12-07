@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import CTA from "../styled/CTA";
 import { Accent, StyledTitle } from "../styled/Random";
+import { StyledDisplay } from "../styled/Game";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Home() {
@@ -20,11 +21,11 @@ export default function Home() {
   });
 
   return (
-    <div>
-      <StyledTitle>Ready to type?</StyledTitle>
+    <StyledDisplay>
+      <StyledTitle>Ready to Type?</StyledTitle>
       <CTA to="/game" data-test="game-link">
         Click or type <Accent>'s'</Accent> to start playing!
       </CTA>
-    </div>
+    </StyledDisplay>
   );
 }

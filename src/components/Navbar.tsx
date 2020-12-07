@@ -24,7 +24,7 @@ export default function Navbar({ toggleTheme }: NavbarProps) {
     <StyledNavbar>
       <StyledNavBrand>
         <Link to="/">
-          Learn.Build.<Accent>Type.</Accent>
+          <Accent>Speed Typer</Accent>
         </Link>
       </StyledNavBrand>
       <StyledNavItems>

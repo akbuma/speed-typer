@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { History, LocationState } from "history";
 import { useScore } from "../contexts/ScoreContext";
 import { StyledLink } from "../styled/Navbar";
-import { StyledCharacter } from "../styled/Game";
-import { StyledTitle } from "../styled/Random";
+import {
+  StyledCharacterGameOver,
+  StyledDisplay,
+  StyledOptions,
+} from "../styled/Game";
+import { StyledTitle, GameMessage } from "../styled/Random";
 import { useAuth0 } from "@auth0/auth0-react";
 
 interface GameOverProps {
@@ -31,12 +35,11 @@ export default function GameOver({ history }: GameOverProps) {
             Authorization: `Bearer ${token}`,
           },
           method: "POST",
-          body: JSON.stringify({ name: "James", Score: score }),
+          body: JSON.stringify({ name: "Buma", Score: score }),
         };
 
         const res = await fetch("/.netlify/functions/saveHighScores", options);
         const data = await res.json();
-        console.log(data);
         if (data.id) {
           setScoreMessage("High Score Set!");
         } else {
@@ -52,17 +55,19 @@ export default function GameOver({ history }: GameOverProps) {
   }, [score]);
 
   return (
-    <div>
+    <StyledDisplay>
       <StyledTitle>Game Over</StyledTitle>
       <h2>{scoreMessage}</h2>
-      {!isAuthenticated && <h2>Please Log In to Save High Scores</h2>}
-      <StyledCharacter>{score}</StyledCharacter>
-      <div>
+      {!isAuthenticated && (
+        <GameMessage>Please Log In to Save High Scores</GameMessage>
+      )}
+      <StyledCharacterGameOver>{score}</StyledCharacterGameOver>
+      <StyledOptions>
         <StyledLink to="/">Go Home</StyledLink>
-      </div>
-      <div>
+      </StyledOptions>
+      <StyledOptions>
         <StyledLink to="/game">Play Again</StyledLink>
-      </div>
-    </div>
+      </StyledOptions>
+    </StyledDisplay>
   );
 }

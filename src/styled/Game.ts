@@ -17,7 +17,16 @@ export const StyledTimer = styled.p`
   grid-column: 3;
 `;
 
-export const StyledCharacter = styled.p`
+export const StyledCharacterGame = styled.p`
+  font-size: 15rem;
+  grid-row: 2;
+  grid-column: 1/4;
+  text-align: center;
+  color: var(--accent-color);
+  margin-top: 15vh;
+`;
+
+export const StyledCharacterGameOver = styled.p`
   font-size: 15rem;
   grid-row: 2;
   grid-column: 1/4;
@@ -25,4 +34,15 @@ export const StyledCharacter = styled.p`
   color: var(--accent-color);
 `;
 
-// GLOBAL STYLES
+export const StyledDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 65vh;
+`;
+
+export const StyledOptions = styled.div`
+  margin: 0px auto;
+  margin-bottom: 15px;
+  width: 200px;
+`;

@@ -7,4 +7,5 @@ export const ScoresList = styled.ol`
 
 export const ScoreLI = styled.li`
   font-size: 1.6rem;
+  margin: 5px;
 `;

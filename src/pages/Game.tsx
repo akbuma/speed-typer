@@ -5,7 +5,8 @@ import {
   StyledGame,
   StyledScore,
   StyledTimer,
-  StyledCharacter,
+  StyledCharacterGame,
+  StyledDisplay,
 } from "../styled/Game";
 import { Strong } from "../styled/Random";
 import { useScore } from "../contexts/ScoreContext";
@@ -17,7 +18,7 @@ interface GameProps {
 export default function Game({ history }: GameProps) {
   const { score, setScore } = useScore();
 
-  const MAX_SECONDS = 5;
+  const MAX_SECONDS = 20;
   const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
 
   const [currentCharacter, setCurrentCharacter] = useState("");
@@ -89,7 +90,9 @@ export default function Game({ history }: GameProps) {
       <StyledScore>
         Score: <Strong>{score}</Strong>
       </StyledScore>
-      <StyledCharacter>{currentCharacter.toUpperCase()}</StyledCharacter>
+      <StyledCharacterGame>
+        {currentCharacter.toUpperCase()}
+      </StyledCharacterGame>
       <StyledTimer>
         Time:{" "}
         <Strong>

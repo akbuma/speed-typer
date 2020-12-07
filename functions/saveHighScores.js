@@ -9,7 +9,6 @@ exports.handler = async (event) => {
 
   const token = getAccessTokenFromHeaders(event.headers);
   const user = await validateAccessToken(token);
-  console.log(user);
 
   // prevent outside users from trying to submit their own high score
   if (!user) {
