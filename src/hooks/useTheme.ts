@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-//@ts-ignore
-export default (): [string, () => void] => {
+const useTheme = (): [string, () => void] => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -22,3 +21,5 @@ export default (): [string, () => void] => {
 
   return [theme, toggleTheme];
 };
+
+export default useTheme;

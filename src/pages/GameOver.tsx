@@ -17,14 +17,14 @@ interface GameOverProps {
 export default function GameOver({ history }: GameOverProps) {
   const { score } = useScore();
   const [scoreMessage, setScoreMessage] = useState("");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   if (score === -1) {
     history.push("/");
   }
 
   useEffect(() => {
+    const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+
     const saveHighScore = async () => {
       try {
         const token = await getAccessTokenSilently({
