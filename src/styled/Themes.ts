@@ -1,5 +1,5 @@
 const sharedStyles = {
-  accentColor: "e16365",
+  accentColor: "#e16365",
 };
 
 export const darkTheme = {

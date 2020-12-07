@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import { Container } from "./styled/Container";
 import { Main } from "./styled/Main";
 import Global from "./styled/Global";
+import Loader from "./styled/Loader";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./styled/Themes";
@@ -26,7 +27,7 @@ function App() {
       <ThemeProvider theme={currentTheme}>
         <Global />
         <Main>
-          {isLoading && <p>Loading...</p>}
+          {isLoading && <Loader>Loading...</Loader>}
           {!isLoading && (
             <Container>
               <Navbar toggleTheme={toggleTheme} />
