@@ -52,7 +52,7 @@ export default function GameOver({ history }: GameOverProps) {
     if (isAuthenticated) {
       saveHighScore();
     }
-  }, [score]);
+  }, [score, getAccessTokenSilently, isAuthenticated]);
 
   return (
     <StyledDisplay>
