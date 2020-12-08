@@ -39,6 +39,7 @@ export const StyledDisplay = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 65vh;
+  margin-top: 10vh;
 `;
 
 export const StyledOptions = styled.div`
