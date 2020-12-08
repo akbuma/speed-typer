@@ -1,3 +1,4 @@
+require("dotenv").config();
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
@@ -8,10 +9,10 @@ import { Auth0Provider } from "@auth0/auth0-react";
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-z0nxbt5z.us.auth0.com"
-      clientId="E4D8LsYvtVMnDoO0mH6Y6IkPssQ6bo2x"
+      domain={process.env.AUTH0_DOMAIN!}
+      clientId={process.env.AUTH0_CLIENTID!}
       redirectUri={window.location.origin}
-      audience="https://speedtyperapi/"
+      audience={process.env.AUTH0_AUDIENCE!}
     >
       <ScoreProvider>
         <App />
