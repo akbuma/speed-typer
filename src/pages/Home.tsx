@@ -5,8 +5,7 @@ import { StyledDisplay } from "../styled/Game";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Home() {
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  console.log(`user is ${user}`);
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     if (isAuthenticated) {
