@@ -1,4 +1,4 @@
-# H1 Speed Typer
+# Speed Typer
 
 A game to test your typing skills against other players online. View the site [here](https://kind-joliot-022250.netlify.app/). <br />
 Built with React/TypeScript and integrated with Auth0 (deployed through Netlify).
